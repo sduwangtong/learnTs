@@ -1,7 +1,6 @@
 {
   "name": "next-with-ts",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -20,5 +19,14 @@
     "@types/react": "^16.9.2",
     "@zeit/next-typescript": "^1.1.1",
     "typescript": "^3.5.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sduwangtong/learnTs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sduwangtong/learnTs/issues"
+  },
+  "homepage": "https://github.com/sduwangtong/learnTs#readme",
+  "description": ""
 }
