@@ -1,4 +1,4 @@
-interface IA {
+export interface IA {
     a: number;
 }
 
@@ -6,7 +6,7 @@ interface IB {
     b: number;
 }
 
-function X (obj: IA & IB) {
+export function X (obj: IA & IB) {
     return obj.a + obj.b;
 }
 
@@ -22,3 +22,4 @@ const objcB = { b: 2 };
 
 const result = combine(objA, objcB);
 // const wrongTest = combine({a:5}, "");
+console.log (result);

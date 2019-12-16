@@ -1,6 +1,6 @@
-import { number } from "prop-types";
+
 import { ShoppingCart } from "./shoppingCart";
-import { calculateTotal } from "./calculateTotalAmount";
+
 
 function getGreeeting(name: string) {
     return `Hello ${name}`;
@@ -106,10 +106,12 @@ sum2(1);
 
 type MyFunc = (a: number, b: number) => number;
 const sum3 : MyFunc = (a, b) => a + b; 
+console.log (sum3(1,2));
 
 
 let cart = new ShoppingCart();
-console.log(`The toal is ${calculateTotal(cart)}`);
+// console.log(`The toal is ${calculateTotal(cart)}`);
+console.log(cart);
 
 export default () => {
     return <div> {getGreeeting('123')}</div>;

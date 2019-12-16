@@ -1,6 +1,6 @@
 // Union type A | B | C
 
-function someFn(myArgument:number | string | boolean) {
+export function someFn(myArgument:number | string | boolean) {
     let x;
     if (typeof myArgument === 'string') {
         x = myArgument.toUpperCase;
@@ -9,6 +9,8 @@ function someFn(myArgument:number | string | boolean) {
     } else {
         x = myArgument;
     }
+
+    return x;
 }
 
 
@@ -25,11 +27,11 @@ interface Cat {
 // or just to use !instanceof!
 // xyz is Obj to cast as well 
 
-function isDog(someObj: Dog | Cat) : someObj is Dog){
+export function isDog(someObj: Dog | Cat) : someObj is Dog {
     return (<Dog>someObj).bark !== undefined;
 }
 
-function callMyPet(pet: Dog | Cat) {
+export function callMyPet(pet: Dog | Cat) {
     pet.walk();
     if (isDog(pet)) {
         pet.bark();

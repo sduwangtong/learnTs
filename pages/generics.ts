@@ -1,10 +1,10 @@
 // define it inside of an arrow 
-function genericFunction<T>(x: T) : T {
+export function genericFunction<T>(x: T) : T {
     return x;
 }
 
 // Generic Interface
-interface GenericInterface<T> {
+export interface GenericInterface<T> {
     <U>(a: U) : U;
     someProp:T;
 }
@@ -12,7 +12,7 @@ interface GenericInterface<T> {
 // Use the thing inside of an arrow to describe the type
 // only for instance variable memeber 
 // this is not for static method or variable member
-class GenericClass<P> {
+export class GenericClass<P> {
     constructor(public props: P) {}
 
     getProps() : P {
@@ -40,14 +40,14 @@ const getExpiredItems = <T extends Expirable>(items: Array<T>) => {
     return items.filter(item => item.expiryDate.getDate() < currentDate); 
 }
 
-const expiredChocoCakes = getExpiredItems<ChocolateCake>(chocolateCakes);
-const expiredVanillaCakes = getExpiredItems<VaillaCake>(vanillaCakes);
+export const expiredChocoCakes = getExpiredItems<ChocolateCake>(chocolateCakes);
+export const expiredVanillaCakes = getExpiredItems<VaillaCake>(vanillaCakes);
 
 interface GetExpiredItemsFunction {
     <T extends Expirable> (items: Array<T>) : Array<T>;
 }
 // function extends an interface
-const getExpiredItemWithInterface: GetExpiredItemsFunction = (items) => {
+export const getExpiredItemWithInterface: GetExpiredItemsFunction = (items) => {
     const currentDate = new Date().getTime();
     return items.filter(item => item.expiryDate.getDate() < currentDate); 
 }
@@ -63,7 +63,7 @@ interface Item {
     id: number;
     price: number;
 }
-const cart: ShoppingCart<number, Item> = {
+export const cart: ShoppingCart<number, Item> = {
     items: [],
     addItem(item) {
         this.items.push(item);
