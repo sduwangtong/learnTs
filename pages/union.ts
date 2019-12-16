@@ -23,6 +23,8 @@ interface Cat {
 }
 // () to cast a class 
 // or just to use !instanceof!
+// xyz is Obj to cast as well 
+
 function isDog(someObj: Dog | Cat) : someObj is Dog){
     return (<Dog>someObj).bark !== undefined;
 }
