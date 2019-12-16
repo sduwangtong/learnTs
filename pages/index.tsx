@@ -113,4 +113,4 @@ console.log(`The toal is ${calculateTotal(cart)}`);
 
 export default () => {
     return <div> {getGreeeting('123')}</div>;
-} ;
+};
