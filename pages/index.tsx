@@ -1,11 +1,6 @@
 
+/**
 import { ShoppingCart } from "./shoppingCart";
-
-
-function getGreeeting(name: string) {
-    return `Hello ${name}`;
-}
-
 
 
 // boolean
@@ -112,7 +107,35 @@ console.log (sum3(1,2));
 let cart = new ShoppingCart();
 // console.log(`The toal is ${calculateTotal(cart)}`);
 console.log(cart);
+**/
+
+import React from 'react';
+// Statless or function component
+export interface Task {
+    title: string;
+}
+
+export interface TasksListProps {
+    tasks: Task[];
+}
+// React can bind type using React.FunctionCompoent
+// it is the same as tasks: TasksListProps
+const TasksList: React.FunctionComponent<TasksListProps> = ({tasks}) => {
+    return (
+        <ul>
+            {tasks.map((task, i) => {
+                return <li key={i}>{task.title}</li>;
+            })}
+        </ul>
+    );
+}
+
+const tasks = [
+    {title: 'Task one'},
+    {title: 'Task two'},
+    {title: 'title'}
+];
 
 export default () => {
-    return <div> {getGreeeting('123')}</div>;
+    return <div> <TasksList tasks={tasks} /></div>;
 };
