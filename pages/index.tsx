@@ -116,19 +116,20 @@ export interface Task {
 }
 
 export interface TasksListProps {
-    tasks: Task[];
+    intialTasks: Task[];
 }
+// Function Component
 // React can bind type using React.FunctionCompoent
 // it is the same as tasks: TasksListProps
-const TasksList: React.FunctionComponent<TasksListProps> = ({tasks}) => {
-    return (
-        <ul>
-            {tasks.map((task, i) => {
-                return <li key={i}>{task.title}</li>;
-            })}
-        </ul>
-    );
-}
+// const TasksList2: React.FunctionComponent<TasksListProps> = ({tasks}) => {
+//     return (
+//         <ul>
+//             {tasks.map((task, i) => {
+//                 return <li key={i}>{task.title}</li>;
+//             })}
+//         </ul>
+//     );
+// }
 
 const tasks = [
     {title: 'Task one'},
@@ -136,6 +137,47 @@ const tasks = [
     {title: 'title'}
 ];
 
+
+// Class Component
+
+interface TasksListState {
+    tasks: Task[];
+}
+class TasksList extends React.Component<
+    TasksListProps,
+    TasksListState
+> {
+    constructor(props: TasksListProps) {
+        super(props);
+        this.state = {
+            tasks: props.intialTasks
+        };
+        // if you need a full function instead of a fat array function
+        // you need to bind this to the function
+        this.onAddNewTaskClick = this.onAddNewTaskClick.bind(this);
+    }
+
+    onAddNewTaskClick() {
+        this.setState({
+            tasks: [...this.state.tasks, {title: "new task"}]
+        });
+    }
+    render() {
+        const {tasks} = this.state;
+        return (
+            <div>
+                <ul>
+                    {tasks.map((task, i) => {
+                        return <li key={i}>{task.title}</li>;
+                    })}
+                </ul>
+                <button onClick={this.onAddNewTaskClick}> Add </button>
+             </div>
+            );
+           
+    }
+}
+
 export default () => {
-    return <div> <TasksList tasks={tasks} /></div>;
+    return <div> <TasksList intialTasks={tasks} /></div>;
 };
