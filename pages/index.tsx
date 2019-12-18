@@ -1,11 +1,20 @@
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { reducer } from "../reducer";
-import { WrappedWeather } from "./Weather";
+import { Weather, WithWeatherProps } from "./Weather";
 const store = createStore(reducer);
 
 export default () => (
     <Provider store={store}>
-        <WrappedWeather theme='white'/>
+        {/* <WrappedWeather theme='white'/> */}
+        <WithWeatherProps>
+            {
+                props => {
+                    return (
+                    <Weather temperature={props.temperature} scale={props.scale} theme='white'>
+                    </Weather>);
+                }
+            }
+        </WithWeatherProps>
     </Provider>
 );

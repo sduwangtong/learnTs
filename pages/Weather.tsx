@@ -26,3 +26,14 @@ function withWeatherProps<P extends WeatherProps>(Component: React.ComponentType
 }
 
 export const WrappedWeather = withWeatherProps(Weather);
+// render function pattern
+interface WithWeatherProps {
+    children(props: WeatherProps): JSX.Element;
+}
+export const WithWeatherProps: React.FunctionComponent<WithWeatherProps> = ({children}) => {
+    const props: WeatherProps = {
+        temperature: 100,
+        scale: 'F'
+    }
+    return children(props);
+};
